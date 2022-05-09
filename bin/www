@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+ global.db = require('../db');
 var app = require('../app');
 var debug = require('debug')('pac5:server');
 var http = require('http');
