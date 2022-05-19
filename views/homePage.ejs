@@ -7,7 +7,6 @@
   </head>
   <body>
     <h1>Projetos</h1>
-
     <tbody>
       <tr>
         <td>
@@ -16,14 +15,15 @@
       </tr>
       <br>
       <br>
-      <% integrantes.forEach(function(integrante){ %>
-        <tr>
-          <td><%= integrante.int_nome %></td>
-          <td>
-            <a href="/alterarIntegrante/<%= integrante.int_codigo %>">Alterar</a>
-          </td>
-        </tr>
-      <% }) %>
+        <% integrantes.forEach(function(integrante){ %>  
+            <tr>
+              <%= integrante.int_nome %>
+              <td colspan="4">
+                <a href="/alterarIntegrante/<%= integrante.int_codigo %>">Alterar</a>
+              </td>
+            </tr>
+          <br>
+        <% }) %>
     </tbody>
   </body>
 </html>

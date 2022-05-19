@@ -45,6 +45,12 @@ async function updateIntegrante(integrante){
     const sql = "update integrante set int_nome = (?), int_senha = (?), int_email = (?), int_telefone = (?) where int_codigo = (?);"
     return await conexao.query(sql, [integrante.nome, integrante.senha, integrante.email, integrante.telefone, integrante.codigo]);
 }
+
+async function excluirIntegrante(integrante){
+    const conexao = await conectarBD();
+    const sql = "delete from integrante where int_codigo = (?);"
+    return await conexao.query(sql, [integrante.codigo]);
+}
   
 
-module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante }
+module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante }

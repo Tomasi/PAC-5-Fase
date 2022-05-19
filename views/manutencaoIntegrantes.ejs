@@ -14,7 +14,6 @@
                 <td>Nome</td>
                 <td><input name="edtNome" value="<%=integrante.int_nome%>"> </td>                
               </tr>
-
               <tr>
                 <td>E-mail</td>
                 <td><input name="edtEmail" value="<%=integrante.int_email%>"></td>
@@ -25,11 +24,10 @@
                 <td>Telefone</td>
                 <td><input name="edtTelefone" value="<%=integrante.int_telefone%>"></td>
               </tr>
-
               <tr>
                 <td> <input name="btnSalvar" type="submit" value="Salvar"> </td>
-                <td> <input name="btnRemover" type="submit" value="Remover"> </td>
-                <td> <a href="/">Cancelar</a></td>
+                <td> <input name="btnRemover" type="button" value="Remover" onclick="location.assign('/excluirIntegrante/<%=integrante.int_codigo%>')"></td>
+                <td> <input name="btnCancelar" type="button" value="Cancelar" onclick="location.assign('/')"></td>
               </tr>
           </table>
       </form>
