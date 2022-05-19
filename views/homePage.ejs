@@ -2,10 +2,28 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Login</title>
+    <title>DashBoard</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <!--Incluir escopo da página principal-->
+    <h1>Projetos</h1>
+
+    <tbody>
+      <tr>
+        <td>
+          <a href="/cadastrarIntegrante">Integrantes</a>
+        </td>
+      </tr>
+      <br>
+      <br>
+      <% integrantes.forEach(function(integrante){ %>
+        <tr>
+          <td><%= integrante.int_nome %></td>
+          <td>
+            <a href="/alterarIntegrante/<%= integrante.int_codigo %>">Alterar</a>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
   </body>
 </html>

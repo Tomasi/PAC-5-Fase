@@ -6,7 +6,32 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-      <h1> <%=titulo%> </h1>
-      <!--Colocar escopo da manutenção de integrantes-->
+      <h1> Manutenção de Integrantes</h1>
+      
+      <form action="<%=acao%>" method="post">
+          <table>
+              <tr>
+                <td>Nome</td>
+                <td><input name="edtNome" value="<%=integrante.int_nome%>"> </td>                
+              </tr>
+
+              <tr>
+                <td>E-mail</td>
+                <td><input name="edtEmail" value="<%=integrante.int_email%>"></td>
+
+                <td>Senha</td>
+                <td><input name="edtSenha" value="<%=integrante.int_senha%>"></td>
+
+                <td>Telefone</td>
+                <td><input name="edtTelefone" value="<%=integrante.int_telefone%>"></td>
+              </tr>
+
+              <tr>
+                <td> <input name="btnSalvar" type="submit" value="Salvar"> </td>
+                <td> <input name="btnRemover" type="submit" value="Remover"> </td>
+                <td> <a href="/">Cancelar</a></td>
+              </tr>
+          </table>
+      </form>
   </body>
 </html>
