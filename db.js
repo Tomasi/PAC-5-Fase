@@ -51,6 +51,11 @@ async function excluirIntegrante(integrante){
     const sql = "delete from integrante where int_codigo = (?);"
     return await conexao.query(sql, [integrante.codigo]);
 }
-  
 
-module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante }
+async function saveProjeto(projeto){
+    const conexao = await conectarBD();
+    const sql = "insert into projeto (proj_nome, proj_logradouro, proj_bairro, proj_municipio, proj_data_inicio, proj_gasto_estimado) values (?,?,?,?,?,?);"
+    return await conexao.query(sql, [projeto.nomeProjeto, projeto.logradouro, projeto.bairro, projeto.municiopio, projeto.dataInicio, projeto.gastoEstimado]);
+}
+  
+module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto }
