@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+#salvaMovimento{
+  color: #FFFF;
+  background-color: #00B7FF;
+}
+
+#cancelaMovimento{
+  color: #FFFF;
+  background-color: #00B7FF;
+}
+
+#removeMovimento{
+  color: #FFFF;
+  background-color: red;
+}

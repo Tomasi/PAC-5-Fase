@@ -83,5 +83,19 @@ async function excluirProjeto(projeto){
     const sql = "delete from projeto where proj_codigo = (?);"
     return await conexao.query(sql, [projeto.codigo]);
 }
-  
-module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto }
+
+async function saveMovimentos(movimentos){
+    const conexao = await connectarBD();
+    const sql = "insert into movimento (mov_nome, mov_responsavel, mov_data, mov_valor) values (?,?,?,?);"
+    return await conexao.query(sql, [movimentos.nome, movimentos.responsavel, movimentos.data, movimentos.valor])
+}
+
+
+/*
+async function consultaMovimentos(){
+    const conexao = await conectarBD()
+    const [registros] = await conexao.query("select * from movimento;")
+    return registros
+}
+*/
+module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto, saveMovimentos } //consultaMovimentos }

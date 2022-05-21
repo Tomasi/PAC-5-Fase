@@ -108,4 +108,18 @@ router.post('/updateProjeto/:id', async function(req, res){
   res.redirect('/');
 })
 
+router.get('/lancarMovimentos', function(req, res){
+  res.render('lancamentoDeMovimentos')
+}); 
+
+router.post('/saveMovimentos', async function(req, res){
+  const nome = req.body.edtNome
+  const responsavel = req.body.edtResponsavel
+  const data = req.body.edtData
+  const valor = req.body.edtValor
+  
+  await global.db.saveMovimentos({nome, responsavel, data, valor});
+  res.redirect('/');
+})
+
 module.exports = router;
