@@ -34,6 +34,20 @@ async function consultaIntegrante(codigo){
     return integrantes[0]
 }
 
+async function consultaProjetos(){
+    const conexao = await conectarBD()
+    const [registros] = await conexao.query("select * from projeto;")
+    return registros
+}
+
+async function consultaProjeto(codigo){
+const conexao = await conectarBD()
+const sql = "select * from projeto where proj_codigo = (?);"
+    const [projetos] = await conexao.query(sql, [codigo])
+    return projetos[0]
+}
+
+
 async function saveIntegrante(integrante){
     const conexao = await conectarBD()
     const sql = "insert into integrante (int_nome, int_senha, int_email, int_telefone) values (?,?,?,?);"
@@ -44,6 +58,12 @@ async function updateIntegrante(integrante){
     const conexao = await conectarBD()
     const sql = "update integrante set int_nome = (?), int_senha = (?), int_email = (?), int_telefone = (?) where int_codigo = (?);"
     return await conexao.query(sql, [integrante.nome, integrante.senha, integrante.email, integrante.telefone, integrante.codigo]);
+}
+
+async function updateProjeto(projeto){
+    const conexao = await conectarBD()
+    const sql = "update projeto set proj_nome = (?), proj_logradouro = (?), proj_bairro = (?), proj_municipio = (?), proj_data_inicio = (?), proj_gasto_estimado = (?) where proj_codigo = (?);"
+    return await conexao.query(sql, [projeto.nome, projeto.logradouro, projeto.bairro, projeto.municiopio, projeto.dataInicio, projeto.gastoEstimado, projeto.codigo]);
 }
 
 async function excluirIntegrante(integrante){
@@ -57,5 +77,11 @@ async function saveProjeto(projeto){
     const sql = "insert into projeto (proj_nome, proj_logradouro, proj_bairro, proj_municipio, proj_data_inicio, proj_gasto_estimado) values (?,?,?,?,?,?);"
     return await conexao.query(sql, [projeto.nomeProjeto, projeto.logradouro, projeto.bairro, projeto.municiopio, projeto.dataInicio, projeto.gastoEstimado]);
 }
+
+async function excluirProjeto(projeto){
+    const conexao = await conectarBD();
+    const sql = "delete from projeto where proj_codigo = (?);"
+    return await conexao.query(sql, [projeto.codigo]);
+}
   
-module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto }
+module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto }

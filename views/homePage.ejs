@@ -6,13 +6,25 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Projetos</h1>
     <tbody>
       <tr>
         <td>
           <a href="/cadastrarProjeto">Projetos</a>
         </td>
       </tr>
+
+      <br>
+      <br>
+        <% projetos.forEach(function(projeto){ %>  
+            <tr>
+              <%= projeto.proj_nome %>
+              <td colspan="4">
+                <a href="/alterarProjeto/<%= projeto.proj_codigo %>">Alterar</a>
+              </td>
+            </tr>
+          <br>
+        <% }) %>
+
       <tr>
         <td>
           <a href="/cadastrarIntegrante">Integrantes</a>

@@ -1,10 +1,12 @@
+/* GET home page. */
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', async function(req, res) {
   const regIntegrantes = await global.db.consultaIntegrantes()
-  res.render('homePage', { integrantes: regIntegrantes });
+  const regProjetos = await global.db.consultaProjetos()
+
+  res.render('homePage', { projetos: regProjetos, integrantes: regIntegrantes });
 
 });
 
@@ -18,9 +20,21 @@ router.get('/cadastrarIntegrante', function(req, res){
   res.render('manutencaoIntegrantes', {acao: '/salvarIntegrante', integrante:{}});
 });
 
+router.get('/alterarProjeto/:id', async function(req, res){
+  const codigo = parseInt(req.params.id)
+  const projeto = await global.db.consultaProjeto(codigo)
+  res.render('manutencaoProjetos', {acao: '/updateProjeto/' + codigo, projeto})
+});
+
 router.get('/excluirIntegrante/:id', async function(req, res){
   const codigo = parseInt(req.params.id)
   await global.db.excluirIntegrante({codigo});
+  res.redirect('/');
+});
+
+router.get('/excluirProjeto/:id', async function(req, res){
+  const codigo = parseInt(req.params.id)
+  await global.db.excluirProjeto({codigo});
   res.redirect('/');
 });
 
@@ -43,10 +57,21 @@ router.post('/salvarProjeto', async function(req, res){
   const logradouro = req.body.edtLogradouro
   const bairro = req.body.edtBairro
   const municipio = req.body.edtMunicipio
-  const dataInicio = parseInt(req.body.edtDataInicio)
-  const gastoEstimado = parseFloat(req.body.edtGastoEstimado)
+
+  let dataInicio = 0
+  if (!isNaN(parseInt(req.body.edtDataInicio))) {
+    console.log("Nan")
+    dataInicio = parseInt(req.body.edtDataInicio)
+  }
+
+  let gastoEstimado = 0
+  if (!isNaN(parseFloat(req.body.edtGastoEstimado))){
+    console.log("Nan")
+    gastoEstimado = parseFloat(req.body.edtGastoEstimado)
+  }
 
   await global.db.saveProjeto({nomeProjeto, logradouro, bairro, municipio, dataInicio, gastoEstimado});
+  res.redirect('/');
 });
 
 router.post('/updateIntegrante/:id', async function(req, res){
@@ -57,6 +82,29 @@ router.post('/updateIntegrante/:id', async function(req, res){
   const senha = req.body.edtSenha
 
   await global.db.updateIntegrante({nome, email, telefone, senha, codigo});
+  res.redirect('/');
+})
+
+router.post('/updateProjeto/:id', async function(req, res){
+  const codigo = parseInt(req.params.id)
+  const nome = req.body.edtNomeProjeto
+  const logradouro = req.body.edtLogradouro
+  const bairro = req.body.edtBairro
+  const municipio = req.body.edtMunicipio
+
+  let dataInicio = 0
+  if (!isNaN(parseInt(req.body.edtDataInicio))) {
+    console.log("Nan")
+    dataInicio = parseInt(req.body.edtDataInicio)
+  }
+
+  let gastoEstimado = 0
+  if (!isNaN(parseFloat(req.body.edtGastoEstimado))){
+    console.log("Nan")
+    gastoEstimado = parseFloat(req.body.edtGastoEstimado)
+  }
+
+  await global.db.updateProjeto({nome, logradouro, bairro, municipio, dataInicio, gastoEstimado, codigo});
   res.redirect('/');
 })
 
