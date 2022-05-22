@@ -40,6 +40,17 @@
             <!--<td> <input name="btnRemover" id= "removeMovimento" type="button" value="Remover"></td>-->
           </tr>
       </table>
+      <header>Listagem de Movimentos</header>
+      <br>
+        <% movimentos.forEach(function(movimento){ %>  
+            <tr>
+            <%= movimento.mov_nome %>
+              <td colspan="4">
+                <a href="/alterarMovimento/<%= movimento.mov_codigo %>">Alterar</a>
+              </td>
+            </tr>
+          <br>
+        <% }) %>
   </form>
   </body>
 </html>

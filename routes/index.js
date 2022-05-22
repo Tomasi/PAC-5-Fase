@@ -127,11 +127,18 @@ router.post('/saveMovimentos/:id', async function(req, res){
   await global.db.saveMovimentos({nome, responsavel, data, valor, tipo, codigo});
   res.redirect('/');
 })
-/*
+
+router.get('/excluirMovimento/:id', async function(req, res){
+  const codigo = parseInt(req.params.id)
+  await global.db.excluirMovimento({codigo});
+  res.redirect('/');
+});
+
 router.get('/alterarMovimento/:id', async function(req, res){
   const codigo = parseInt(req.params.id)
-  const movimento = await global.db.consultaMovimentos(codigo)
-  res.render('lancamentoDeMovimentos', {acao: '/updateMovimento/' + codigo, movimento})
+  const regMovimentos = await global.db.consultaMovimentos(codigo)
+  console.log(regMovimentos)
+  res.render('lancamentoDeMovimentos', {acao: '/updateMovimento/' + codigo, movimentos:regMovimentos })
 });
-*/
+
 module.exports = router;
