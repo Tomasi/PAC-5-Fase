@@ -6,31 +6,40 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <header>
       <h1> Lançamento de Movimentos</h1>
+    </header>
+    <form action="<%=acao%>" method="post">
       <table>
-        <tr>
-          <td>Nome do Movimento</td>
-          <td><input name="edtNome"></td>
-        </tr>
-        <tr>
-          <td>Tipo do Movimento</td>
-          <td><input name="edtTipo"></td>
+          <tr>
+            <td>Nome do Movimento</td>
+            <td><input name="edtNome"></td>
+          </tr>
+          <tr>
+            <td>Tipo do Movimento</td>
+            <td>
+              <select name="edtTipo">
+                <option value="1">Entrada</option>
+                <option value="2">Saida</option>
+              </select>
+            </td>
 
-          <td>Responsável do Movimento</td>
-          <td><input name="edtResponsavel"></td>
+            <td>Responsável do Movimento</td>
+            <td><input name="edtResponsavel"></td>
 
-          <td>Data do Movimento</td>
-          <td><input name="edtData"></td>
-        </tr>
-        <tr>
-          <td>Valor: </td>
-          <td><input name="edtValor"></td>
-        </tr>
-        <tr>
-          <td> <input name="btnSalvar" id="salvaMovimento" type="submit" value="Salvar"> </td>
-          <td> <input name="btnCancelar" id="cancelaMovimento" type="button" value="Cancelar" onclick="location.assign('/')"></td>
-          <td> <input name="btnRemover" id= "removeMovimento" type="button" value="Remover"></td>
-        </tr>
-    </table>
+            <td>Data do Movimento</td>
+            <td><input name="edtData"></td>
+          </tr>
+          <tr>
+            <td>Valor: </td>
+            <td><input name="edtValor"></td>
+          </tr>
+          <tr>
+            <td> <input name="btnSalvar" id="salvaMovimento" type="submit" value="Salvar"> </td>
+            <td> <input name="btnCancelar" id="cancelaMovimento" type="button" value="Cancelar" onclick="location.assign('/')"></td>
+            <!--<td> <input name="btnRemover" id= "removeMovimento" type="button" value="Remover"></td>-->
+          </tr>
+      </table>
+  </form>
   </body>
 </html>

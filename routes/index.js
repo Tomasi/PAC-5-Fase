@@ -20,16 +20,16 @@ router.get('/cadastrarIntegrante', function(req, res){
   res.render('manutencaoIntegrantes', {acao: '/salvarIntegrante', integrante:{}});
 });
 
-router.get('/alterarProjeto/:id', async function(req, res){
-  const codigo = parseInt(req.params.id)
-  const projeto = await global.db.consultaProjeto(codigo)
-  res.render('manutencaoProjetos', {acao: '/updateProjeto/' + codigo, projeto})
-});
-
 router.get('/excluirIntegrante/:id', async function(req, res){
   const codigo = parseInt(req.params.id)
   await global.db.excluirIntegrante({codigo});
   res.redirect('/');
+});
+
+router.get('/alterarProjeto/:id', async function(req, res){
+  const codigo = parseInt(req.params.id)
+  const projeto = await global.db.consultaProjeto(codigo)
+  res.render('manutencaoProjetos', {acao: '/updateProjeto/' + codigo, projeto})
 });
 
 router.get('/excluirProjeto/:id', async function(req, res){
@@ -108,18 +108,30 @@ router.post('/updateProjeto/:id', async function(req, res){
   res.redirect('/');
 })
 
-router.get('/lancarMovimentos', function(req, res){
-  res.render('lancamentoDeMovimentos')
+router.get('/lancarMovimentos/:id', function(req, res){
+  const tipos = global.db.consultaTiposMovimento()
+  const codigo = parseInt(req.params.id)
+
+  res.render('lancamentoDeMovimentos', {acao: '/saveMovimentos/'+ codigo, movimentos:{}, tipos: tipos})
 }); 
 
-router.post('/saveMovimentos', async function(req, res){
+router.post('/saveMovimentos/:id', async function(req, res){
   const nome = req.body.edtNome
   const responsavel = req.body.edtResponsavel
   const data = req.body.edtData
   const valor = req.body.edtValor
-  
-  await global.db.saveMovimentos({nome, responsavel, data, valor});
+  const tipo = req.body. edtTipo
+  const codigo = parseInt(req.params.id)
+  //const projeto = await global.db.consultaProjeto(codigo)
+
+  await global.db.saveMovimentos({nome, responsavel, data, valor, tipo, codigo});
   res.redirect('/');
 })
-
+/*
+router.get('/alterarMovimento/:id', async function(req, res){
+  const codigo = parseInt(req.params.id)
+  const movimento = await global.db.consultaMovimentos(codigo)
+  res.render('lancamentoDeMovimentos', {acao: '/updateMovimento/' + codigo, movimento})
+});
+*/
 module.exports = router;

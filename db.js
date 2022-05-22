@@ -85,12 +85,16 @@ async function excluirProjeto(projeto){
 }
 
 async function saveMovimentos(movimentos){
-    const conexao = await connectarBD();
-    const sql = "insert into movimento (mov_nome, mov_responsavel, mov_data, mov_valor) values (?,?,?,?);"
-    return await conexao.query(sql, [movimentos.nome, movimentos.responsavel, movimentos.data, movimentos.valor])
+    const conexao = await conectarBD();
+    const sql = "insert into movimento (mov_nome, mov_responsavel, mov_data, mov_valor, mov_tipo, mov_projeto) values (?, ?,?,?,?,?);"
+    return await conexao.query(sql, [movimentos.nome, movimentos.responsavel, movimentos.data, movimentos.valor, movimentos.tipo, movimentos.codigo])
 }
 
-
+async function consultaTiposMovimento(){
+    const conexao = await conectarBD();
+    const sql = "select * from tip_movimento;"
+    return await conexao.query(sql)
+}
 /*
 async function consultaMovimentos(){
     const conexao = await conectarBD()
@@ -98,4 +102,4 @@ async function consultaMovimentos(){
     return registros
 }
 */
-module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto, saveMovimentos } //consultaMovimentos }
+module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto, saveMovimentos, consultaTiposMovimento } //consultaMovimentos }
