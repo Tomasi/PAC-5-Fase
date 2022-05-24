@@ -37,20 +37,8 @@
           <tr>
             <td> <input name="btnSalvar" id="salvaMovimento" type="submit" value="Salvar"> </td>
             <td> <input name="btnCancelar" id="cancelaMovimento" type="button" value="Cancelar" onclick="location.assign('/')"></td>
-            <!--<td> <input name="btnRemover" id= "removeMovimento" type="button" value="Remover"></td>-->
           </tr>
       </table>
-      <header>Listagem de Movimentos</header>
-      <br>
-        <% movimentos.forEach(function(movimento){ %>  
-            <tr>
-            <%= movimento.mov_nome %>
-              <td colspan="4">
-                <a href="/alterarMovimento/<%= movimento.mov_codigo %>">Alterar</a>
-              </td>
-            </tr>
-          <br>
-        <% }) %>
   </form>
   </body>
 </html>

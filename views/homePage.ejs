@@ -7,32 +7,30 @@
   </head>
   <body>
     <tbody>
-      <tr>
-        <td>
-          <a href="/cadastrarProjeto">Projetos</a>
-        </td>
-      </tr>
-
-      <br>
-      <br>
-        <% projetos.forEach(function(projeto){ %>  
-            <tr>
-              <%= projeto.proj_nome %>
-              <td colspan="4">
-                <a href="/alterarProjeto/<%= projeto.proj_codigo %>">Alterar</a> |
-                <td> <a href="/lancarMovimentos/<%= projeto.proj_codigo %>">Lançar Movimentos </a></td>
-              </td>
-            </tr>
-          <br>
-        <% }) %>
-
-      <tr>
-        <td>
-          <a href="/cadastrarIntegrante">Integrantes</a>
-        </td>
-      </tr>
-      <br>
-      <br>
+      <header>Projetos <button type="button" class="button blue mobile" onclick="location.assign('/cadastrarProjeto')">+</button></header>
+      <table class="projeto">
+        <thead>
+            <% projetos.forEach(function(projeto){ %>  
+                <tr>
+                  <td colspan="4">
+                  <%= projeto.proj_nome %>
+                    <a href="/alterarProjeto/<%= projeto.proj_codigo %>">Alterar</a>
+                    <a href="/lancarMovimentos/<%= projeto.proj_codigo %>">Lançar Movimentos </a>
+                    <a href="/gerarEstratificacao/<%= projeto.proj_codigo %>">Estratificação </a>
+                  </td>
+                </tr>
+            <% }) %>
+        </thead>
+      </table>
+      <header>
+        <div class="integrante">
+          <header class="">
+            <td>
+              Integrantes <button type="button" class="button blue mobile" onclick="location.assign('/cadastrarIntegrante')">+</button>
+            </td>
+          </tr>
+        </div>
+      </header>
         <% integrantes.forEach(function(integrante){ %>  
             <tr>
               <%= integrante.int_nome %>
@@ -44,9 +42,6 @@
         <% }) %>
         <br>
         <br>
-       <!-- <tr>
-          <td> <a href="/lancarMovimentos">Lançar Movimentos </a></td>
-        </tr>-->
     </tbody>
   </body>
 </html>

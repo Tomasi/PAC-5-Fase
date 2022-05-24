@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Estratificação Movimentos</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <header>
+      <h1> Estratificação Movimentos</h1>
+    </header>
+    <form action="<%=acao%>" method="post">
+      <table>
+        <% movimentos.forEach(function(movimento){ %>  
+            <tr>
+              <%= movimento.mov_nome %> 
+            </tr>
+          <br>
+        <% }) %>
+      </table>
+  </form>
+  </body>
+</html>

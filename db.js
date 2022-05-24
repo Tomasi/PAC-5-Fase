@@ -41,12 +41,11 @@ async function consultaProjetos(){
 }
 
 async function consultaProjeto(codigo){
-const conexao = await conectarBD()
-const sql = "select * from projeto where proj_codigo = (?);"
+    const conexao = await conectarBD()
+    const sql = "select * from projeto where proj_codigo = (?);"
     const [projetos] = await conexao.query(sql, [codigo])
     return projetos[0]
 }
-
 
 async function saveIntegrante(integrante){
     const conexao = await conectarBD()
@@ -102,17 +101,11 @@ async function consultaTiposMovimento(){
     return await conexao.query(sql)
 }
 
-async function consultaMovimentos(){
+async function consultaMovimentos(codigo){
     const conexao = await conectarBD()
-    const [registros] = await conexao.query("select * from movimento;")
-    return registros
-}
-
-async function consultaMovimento(codigo){
-    const conexao = await conectarBD()
-    const sql = "select * from movimento where mov_codigo = (?);"
+    const sql = "select * from movimento where mov_projeto = (?);"
     const [movimentos] = await conexao.query(sql, [codigo])
-    return movimentos[0]
+    return movimentos
 }
 
-module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto, saveMovimentos, consultaTiposMovimento, excluirMovimentos, consultaMovimentos, consultaMovimento }
+module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto, saveMovimentos, consultaTiposMovimento, excluirMovimentos, consultaMovimentos}
