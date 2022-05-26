@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Manutenção de Movimentos</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="header">
+      <div class="center">
+      </div>
+    </div>
+
+    <div class="formManutencaoMovimentos">
+        
+        <form action="<%=acao%>" method="post">
+          <h1> Manutenção de Movimentos</h1>
+
+            <table>
+                <tr>
+                    <td>
+                        <span>Nome do Movimento</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <input type="text" name="edtNome" value="<%=movimento.mov_nome%>">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span>Responsável</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" name="edtResponsavel" value="<%=movimento.mov_responsavel%>">
+                    </td>
+                </tr>
+              
+                <tr>
+                    <td>
+                        <span>Data</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" name="edtData" value="<%=movimento.mov_data%>">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <span>Valor</span>       
+                    </td>
+                </tr>
+            
+                <tr>
+                    <td>
+                        <input type="text" name="edtValor" value="<%=movimento.mov_valor%>">
+                    </td>
+                </tr>
+            
+            
+                <tr>
+                    <td>
+                        <span>Movimento</span>  
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <select id="selection" name="edtTipo">
+                            <option value="1" <% if (movimento.mov_tipo == 1) { %> selected <% } %>> Entrada</option>
+                            <option value="2" <% if (movimento.mov_tipo == 2) { %> selected <% } %>> Saida</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <input name="btnSalvar" id="salvaMovimento" type="submit" class="salvarMovimento" value="Salvar"> 
+            <input name="btnCancelar" id="cancelaMovimento" type="button" value="Cancelar" class="cancelarMovimento" onclick="location.assign('/')">
+            <input name="btnRemover" id="removerMovimento" type="button" value="Remover" class="removerMovimento" onclick="location.assign('/excluirMovimento/<%=movimento.mov_codigo%>')">
+        </form>
+    </div>
+  </body>
+</html>

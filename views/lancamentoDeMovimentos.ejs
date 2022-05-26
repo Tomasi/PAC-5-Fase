@@ -6,39 +6,81 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <header>
+    <div class="header">
+      <div class="center">
+      </div>
+    </div>
+
+    <div class="formMovimentos">
       <h1> Lançamento de Movimentos</h1>
-    </header>
-    <form action="<%=acao%>" method="post">
-      <table>
+
+      <form action="<%=acao%>" method="post">
+
+        <div class="input-container">
+          <table>
+            <tr>
+               <td>
+                 <span>Nome do Movimento</span>
+                </td>
+            </tr>
+             <tr>
+               <td>
+                 <input type="text" name="edtNome">
+                </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span>Responsável</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="edtResponsavel">
+              </td>
+            </tr>
+
           <tr>
-            <td>Nome do Movimento</td>
-            <td><input name="edtNome"></td>
-          </tr>
-          <tr>
-            <td>Tipo do Movimento</td>
             <td>
-              <select name="edtTipo">
-                <option value="1">Entrada</option>
-                <option value="2">Saida</option>
-              </select>
+              <span>Data</span>
             </td>
-
-            <td>Responsável do Movimento</td>
-            <td><input name="edtResponsavel"></td>
-
-            <td>Data do Movimento</td>
-            <td><input name="edtData"></td>
           </tr>
           <tr>
-            <td>Valor: </td>
-            <td><input name="edtValor"></td>
+            <td>
+              <input type="text" name="edtData">
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <span>Valor</span>       
+            </td>
           </tr>
           <tr>
-            <td> <input name="btnSalvar" id="salvaMovimento" type="submit" value="Salvar"> </td>
-            <td> <input name="btnCancelar" id="cancelaMovimento" type="button" value="Cancelar" onclick="location.assign('/')"></td>
+            <td>
+              <input type="text" name="edtValor">
+            </td>
           </tr>
-      </table>
-  </form>
+        </table>
+
+        <tr>
+          <td>
+            <span>Movimento</span>  
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select id="selection" name="edtTipo">
+              <option value="1">Entrada</option>
+              <option value="2">Saida</option>
+            </select>
+          </td>
+        </tr>
+
+        </div>
+        <input name="btnSalvar" id="salvaMovimento" type="submit" class="salvarMovimento" value="Salvar"> 
+        <input name="btnCancelar" id="cancelaMovimento" type="button" value="Cancelar" class="cancelarMovimento" onclick="location.assign('/')">
+    </form>
+    </div>
   </body>
 </html>

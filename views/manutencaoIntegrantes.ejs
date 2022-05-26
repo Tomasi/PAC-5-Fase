@@ -6,30 +6,66 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+
+    <div class="header">
+      <div class="center">
+      </div>
+    </div>
+
+    <div class="formIntegrantes">
       <h1> Manutenção de Integrantes</h1>
       
       <form action="<%=acao%>" method="post">
           <table>
-              <tr>
-                <td>Nome</td>
-                <td><input name="edtNome" value="<%=integrante.int_nome%>"> </td>                
-              </tr>
-              <tr>
-                <td>E-mail</td>
-                <td><input name="edtEmail" value="<%=integrante.int_email%>"></td>
+            <tr>
+              <td>
+                <span>Nome</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input name="edtNome" value="<%=integrante.int_nome%>"> 
+              </td>
+            </tr>
 
-                <td>Senha</td>
-                <td><input name="edtSenha" value="<%=integrante.int_senha%>"></td>
 
-                <td>Telefone</td>
-                <td><input name="edtTelefone" value="<%=integrante.int_telefone%>"></td>
-              </tr>
-              <tr>
-                <td> <input name="btnSalvar" type="submit" value="Salvar"> </td>
-                <td> <input name="btnRemover" type="button" value="Remover" onclick="location.assign('/excluirIntegrante/<%=integrante.int_codigo%>')"></td>
-                <td> <input name="btnCancelar" type="button" value="Cancelar" onclick="location.assign('/')"></td>
-              </tr>
+            <tr>
+              <td>
+                <span>E-mail</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input name="edtEmail" value="<%=integrante.int_email%>">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span>Senha</span> 
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input name="edtSenha" value="<%=integrante.int_senha%>">
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span>Telefone</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input name="edtTelefone" value="<%=integrante.int_telefone%>">
+              </td>
+            </tr>    
           </table>
+            <input name="btnSalvar" type="submit" value="Salvar"> 
+            <input name="btnRemover" type="button" value="Remover" onclick="location.assign('/excluirIntegrante/<%=integrante.int_codigo%>')">
+            <input name="btnCancelar" type="button" value="Cancelar" onclick="location.assign('/')">
       </form>
+    </div>
   </body>
 </html>

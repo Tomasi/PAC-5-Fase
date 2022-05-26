@@ -6,42 +6,41 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <tbody>
-      <header>Projetos <button type="button" class="button blue mobile" onclick="location.assign('/cadastrarProjeto')">+</button></header>
-      <table class="projeto">
-        <thead>
-            <% projetos.forEach(function(projeto){ %>  
-                <tr>
-                  <td colspan="4">
-                  <%= projeto.proj_nome %>
-                    <a href="/alterarProjeto/<%= projeto.proj_codigo %>">Alterar</a>
-                    <a href="/lancarMovimentos/<%= projeto.proj_codigo %>">Lançar Movimentos </a>
-                    <a href="/gerarEstratificacao/<%= projeto.proj_codigo %>">Estratificação </a>
-                  </td>
-                </tr>
-            <% }) %>
-        </thead>
-      </table>
-      <header>
-        <div class="integrante">
-          <header class="">
-            <td>
-              Integrantes <button type="button" class="button blue mobile" onclick="location.assign('/cadastrarIntegrante')">+</button>
+    <div class="header">
+      <div class="center">
+      </div>
+    </div>
+    <div class="container-banner">
+      <div class="center">
+        <h2>Projetos <button type="button" class="button blue mobile" onclick="location.assign('/cadastrarProjeto')">+</button></h2>
+        <br>
+        <% projetos.forEach(function(projeto){ %>  
+          <tr>
+            <td colspan="4">
+            <%= projeto.proj_nome %>
+              <a href="/alterarProjeto/<%= projeto.proj_codigo %>">Alterar</a>
+              <a href="/lancarMovimentos/<%= projeto.proj_codigo %>">Lançar Movimentos </a>
+              <a href="/gerarEstratificacao/<%= projeto.proj_codigo %>">Estratificação </a>
+              <br>
             </td>
           </tr>
-        </div>
-      </header>
-        <% integrantes.forEach(function(integrante){ %>  
-            <tr>
-              <%= integrante.int_nome %>
-              <td colspan="4">
-                <a href="/alterarIntegrante/<%= integrante.int_codigo %>">Alterar</a>
-              </td>
-            </tr>
+      <% }) %>
+        <div class="form">
+          <h2>Integrantes <button type="button" class="button blue mobile" onclick="location.assign('/cadastrarIntegrante')">+</button></h2>
           <br>
-        <% }) %>
-        <br>
-        <br>
-    </tbody>
+          <td>
+            <% integrantes.forEach(function(integrante){ %>  
+              <tr>
+                <%= integrante.int_nome %>
+                <td colspan="4">
+                  <a href="/alterarIntegrante/<%= integrante.int_codigo %>">Alterar</a>
+                </td>
+              </tr>
+            <br>
+          <% }) %>
+          </td>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

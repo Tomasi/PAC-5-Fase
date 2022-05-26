@@ -1,8 +1,128 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.center{
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.header{
+  width: 100%;
+  height: 60px;
+  background-color:white;
+}
+
+.container-banner{
+  width: 100%;
+  height: 557px; 
+  background-color: #f1f5f5;
+  background-size: cover;
+  background-position: center;
+}
+
+.container-banner > .center {
+  height: 100%;
+}
+
+.form{
+  padding: 10px;
+  width: 400px;
+  height: calc(80% + 50px);
+  float: right;
+  position: relative;
+  top: -10;
+  border: 8px solid#ccc;
+  background-color: white;
+}
+
+.formMovimentos{
+  padding: 10px;
+}
+
+.formProjetos{
+  padding: 10px;
+}
+
+.formEstratificacao{
+  padding: 10px;
+}
+
+.formManutencaoMovimentos{
+  padding: 10px;
+}
+
+.formIntegrantes {
+  padding: 10px;
+}
+
+.login{
+  padding: 10px;
+}
+
+.form h2 {
+  font-weight: normal;
+  color: #101010;
+  font-size: 20px;
+}
+
+.input-container{
+  padding: 10px;
+  margin-top: 20px;
+}
+
+
+/*.input-container span {
+  display: inline-block;
+  width: 100%;
+  font-size: #bbbbbb;
+  font-size: 17px;
+}
+
+.input-container input[type=text]{
+  width: 344px;
+  height: 40px;
+  border: 1px solid#ccc;
+}
+
+.salvarMovimento{
+  width: 80px;
+  height: 25px;
+}
+
+.cancelarMovimento{
+  width: 80px;
+  height: 25px;
+}
+
+.input-container input[type=submit]{
+  font-size: 16px;
+  background-color: ;
+}
+
+.input-container input[type=button]{
+  font-size: 16px;
+  background-color: ;
+}
+
+.input-container input[type=select]{
+  width: 344px;
+  height: 40px;
+  border: 1px solid#ccc;
+}
+
+#selection {
+  width: 344px;
+  height: 40px;
+  border: 1px solid#ccc;
 }

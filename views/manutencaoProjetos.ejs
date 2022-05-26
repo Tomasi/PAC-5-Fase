@@ -6,33 +6,95 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <div class="header">
+      <div class="center">
+      </div>
+    </div>
+
+    <div class="formProjetos" > 
       <h1> Manutenção de Projetos </h1>
+
       <form action="<%=acao%>" method="post">
+
         <table>
+
           <tr>
-            <td>Nome do Projeto</td>
-            <td><input name="edtNomeProjeto" value="<%=projeto.proj_nome%>"></td>
+            <td>
+              <span>Nome Projeto</span>
+            </td>
           </tr>
+
           <tr>
-            <td>Logradouro</td>
-            <td><input name="edtLogradouro" value="<%=projeto.proj_logradouro%>"></td>
-            <td>Bairro</td>
-            <td><input name="edtBairro" value="<%=projeto.proj_bairro%>"></td>
-            <td>Munícipio</td>
-            <td><input name="edtMunicipio" value="<%=projeto.proj_municipio%>"></td>
+            <td>
+              <input type="text" name="edtNomeProjeto" value="<%=projeto.proj_nome%>">
+            </td>
           </tr>
+
           <tr>
-            <td>Data Início</td>
-            <td><input name="edtDataInicio" value="<%=projeto.proj_data_inicio%>"></td>
-            <td>Gasto Estimado</td>
-            <td><input name="edtGastoEstimado" value="<%=projeto.proj_municipio%>"></td>
+            <td>
+              <span>Logradouro</span>
+            </td>
           </tr>
+
           <tr>
-            <td> <input name="btnSalvar" type="submit" value="Salvar"> </td>
-            <td> <input name="btnRemover" type="button" value="Remover" onclick="location.assign('/excluirProjeto/<%=projeto.proj_codigo%>')"></td>
-            <td> <input name="btnCancelar" type="button" value="Cancelar" onclick="location.assign('/')"></td>
+            <td>
+              <input type="text" name="edtLogradouro" value="<%=projeto.proj_logradouro%>">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span>Bairro</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="edtBairro" value="<%=projeto.proj_bairro%>">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span>Munícipio</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="edtMunicipio" value="<%=projeto.proj_municipio%>">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span>Data Início</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="edtData" value="<%=projeto.proj_data_inicio%>">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span>Gasto Estimado</span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="text" name="edtGastoEstimado" value="<%=projeto.proj_gasto_estimado%>">
+            </td>
           </tr>
         </table>
+
+        <td> <input name="btnSalvar" type="submit" value="Salvar"> </td>
+        <td> <input name="btnRemover" type="button" value="Remover" onclick="location.assign('/excluirProjeto/<%=projeto.proj_codigo%>')"></td>
+        <td> <input name="btnCancelar" type="button" value="Cancelar" onclick="location.assign('/')"></td>
       </form>
+    </div>
   </body>
 </html>

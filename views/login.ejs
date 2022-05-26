@@ -6,6 +6,37 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <!--Incluir escopo da página de Login-->
+    
+    <div class="login">
+      <h1>Login</h1>
+
+      <form action="/efetuarLogin" method="post">
+        <table>
+          <tr>
+            <td>
+              <span>E-mail</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" name="edtEmail"> 
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span>Senha</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="password" name="edtSenha">
+            </td>
+          </tr>
+        </table>
+
+        <input name="btnLogin" type="submit" value="Entrar"> 
+      </form>
+    </div>
   </body>
 </html>

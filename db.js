@@ -1,3 +1,4 @@
+const { query } = require('express');
 const mysql = require('mysql2/promise')
 
 async function conectarBD()
@@ -62,7 +63,7 @@ async function updateIntegrante(integrante){
 async function updateProjeto(projeto){
     const conexao = await conectarBD()
     const sql = "update projeto set proj_nome = (?), proj_logradouro = (?), proj_bairro = (?), proj_municipio = (?), proj_data_inicio = (?), proj_gasto_estimado = (?) where proj_codigo = (?);"
-    return await conexao.query(sql, [projeto.nome, projeto.logradouro, projeto.bairro, projeto.municiopio, projeto.dataInicio, projeto.gastoEstimado, projeto.codigo]);
+    return await conexao.query(sql, [projeto.nome, projeto.logradouro, projeto.bairro, projeto.municipio, projeto.dataInicio, projeto.gastoEstimado, projeto.codigo]);
 }
 
 async function excluirIntegrante(integrante){
@@ -74,7 +75,7 @@ async function excluirIntegrante(integrante){
 async function saveProjeto(projeto){
     const conexao = await conectarBD();
     const sql = "insert into projeto (proj_nome, proj_logradouro, proj_bairro, proj_municipio, proj_data_inicio, proj_gasto_estimado) values (?,?,?,?,?,?);"
-    return await conexao.query(sql, [projeto.nomeProjeto, projeto.logradouro, projeto.bairro, projeto.municiopio, projeto.dataInicio, projeto.gastoEstimado]);
+    return await conexao.query(sql, [projeto.nomeProjeto, projeto.logradouro, projeto.bairro, projeto.municipio, projeto.dataInicio, projeto.gastoEstimado]);
 }
 
 async function excluirProjeto(projeto){
@@ -89,7 +90,7 @@ async function saveMovimentos(movimentos){
     return await conexao.query(sql, [movimentos.nome, movimentos.responsavel, movimentos.data, movimentos.valor, movimentos.tipo, movimentos.codigo])
 }
 
-async function excluirMovimentos(movimentos){
+async function excluirMovimento(movimentos){
     const conexao = await conectarBD();
     const sql= "delete from movimento where mov_codigo = (?);"
     return await conexao.query (sql, [movimentos.codigo]);
@@ -101,6 +102,12 @@ async function consultaTiposMovimento(){
     return await conexao.query(sql)
 }
 
+async function updateMovimento(movimento){
+    const conexao = await conectarBD();
+    const sql = "update movimento set mov_nome = (?), mov_responsavel = (?), mov_data = (?), mov_valor = (?), mov_tipo = (?) where mov_codigo = (?);"
+    return conexao.query(sql, [movimento.nome, movimento.responsavel, movimento.data, movimento.valor, movimento.tipo, movimento.codigo])
+}
+
 async function consultaMovimentos(codigo){
     const conexao = await conectarBD()
     const sql = "select * from movimento where mov_projeto = (?);"
@@ -108,4 +115,18 @@ async function consultaMovimentos(codigo){
     return movimentos
 }
 
-module.exports = { saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto, saveMovimentos, consultaTiposMovimento, excluirMovimentos, consultaMovimentos}
+async function consultaMovimento(codigo){
+    const conexao = await conectarBD()
+    const sql = "select * from movimento where mov_codigo = (?);"
+    const [movimentos]  = await conexao.query(sql, [codigo])
+    return movimentos[0]
+}
+
+async function buscarUsuario(usuario){
+    const conexao = await conectarBD()
+    const sql = "select * from integrante where int_email = (?) and int_senha = (?)"
+    const [user] = await conexao.query(sql, [usuario.email, usuario.senha])
+    return user[0]
+}
+
+module.exports = { buscarUsuario, saveIntegrante, consultaIntegrantes, consultaIntegrante, updateIntegrante, excluirIntegrante, saveProjeto, consultaProjetos, excluirProjeto, consultaProjeto, updateProjeto, saveMovimentos, consultaTiposMovimento, excluirMovimento, consultaMovimentos, updateMovimento, consultaMovimento}
