@@ -124,7 +124,10 @@ async function consultaMovimento(codigo){
 
 async function buscarUsuario(usuario){
     const conexao = await conectarBD()
-    const sql = "select * from integrante where int_email = (?) and int_senha = (?)"
+    const sql = "select * from integrante where int_email = (?) and int_senha = (?);"
+    console.log(sql)
+    console.log(usuario.email)
+    console.log(usuario.senha)
     const [user] = await conexao.query(sql, [usuario.email, usuario.senha])
     return user[0]
 }

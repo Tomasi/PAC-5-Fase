@@ -3,40 +3,35 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Login</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='./stylesheets/loginStyle.css'/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
   <body>
-    
-    <div class="login">
-      <h1>Login</h1>
 
-      <form action="/efetuarLogin" method="post">
-        <table>
-          <tr>
-            <td>
-              <span>E-mail</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="text" name="edtEmail"> 
-            </td>
-          </tr>
+    <div class="sidenav">
+      <div class="login-main-text">
+         <p>Colocar imagem</p>
+      </div>
+   </div>
 
-          <tr>
-            <td>
-              <span>Senha</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="password" name="edtSenha">
-            </td>
-          </tr>
-        </table>
-
-        <input name="btnLogin" type="submit" value="Entrar"> 
-      </form>
-    </div>
+   <div class="main">
+      <div class="col-md-6 col-sm-12">
+         <div class="login-form">
+            <form action="/efetuarLogin" method="post">
+               <div class="form-group">
+                  <label>E-mail</label>
+                  <input type="text" class="form-control" placeholder="E-mail" name="edtEmail">
+               </div>
+               <div class="form-group">
+                  <label>Senha</label>
+                  <input type="password" class="form-control" placeholder="Senha" name="edtSenha">
+               </div>
+               <button type="submit" class="btn btn-black">Entrar</button>
+            </form>
+         </div>
+      </div>
+   </div>
   </body>
 </html>

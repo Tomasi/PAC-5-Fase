@@ -28,14 +28,9 @@ router.post('/efetuarLogin', async function(req, res){
   if (user){
     global.usuariocodigo = user.int_codigo
     global.usuariologin  = user.int_email
-  }
 
-  if (!user){
-
-  }else{
     const integrantes = await global.db.consultaIntegrantes()
     const projetos = await global.db.consultaProjetos()
-
     res.render('homePage', { projetos, integrantes });
   }
 })
@@ -43,7 +38,7 @@ router.post('/efetuarLogin', async function(req, res){
 router.get('homePage', async function(req, res){
   const integrantes = await global.db.consultaIntegrantes()
   const projetos = await global.db.consultaProjetos()
-
+  console.log(integrantes)
   res.render('homePage', { projetos, integrantes });
 })
 
