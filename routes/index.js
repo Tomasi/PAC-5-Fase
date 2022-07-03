@@ -48,8 +48,10 @@ router.get('/cadastrarIntegrante', function(req, res){
 
 router.get('/alterarIntegrante/:id', async function(req, res){
   const codigo = parseInt(req.params.id)
-  const integrante = await global.db.consultaIntegrante(codigo)
-  res.render('manutencaoIntegrantes', {acao: '/updateIntegrante/' + codigo, integrante})
+  if (!isNaN(codigo)){
+    const integrante = await global.db.consultaIntegrante(codigo)
+    res.render('manutencaoIntegrantes', {acao: '/updateIntegrante/' + codigo, integrante})
+  }
 });
 
 router.get('/excluirIntegrante/:id', async function(req, res){
