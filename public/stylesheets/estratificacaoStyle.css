@@ -1,0 +1,15 @@
+.header{
+    width: 100%;
+    height: 60px;
+    background-color:white;
+}
+
+.center{
+    padding: 15px;
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.container{
+    padding: 50px;
+}
