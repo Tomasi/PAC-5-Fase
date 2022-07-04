@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>DashBoard</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
   <body>
     <div class="header">
@@ -12,6 +13,34 @@
     </div>
     <div class="container-banner">
       <div class="center">
+        
+        <div>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    
+        <script>
+        var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+        var yValues = [55, 49, 44, 24, 15];
+        var barColors = ["red", "green","blue","orange","brown"];
+        
+        new Chart("myChart", {
+          type: "bar",
+          data: {
+            labels: xValues,
+            datasets: [{
+              backgroundColor: barColors,
+              data: yValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            title: {
+              display: true,
+              text: "World Wine Production 2018"
+            }
+          }
+        });
+        </script>
+      </div>
         <h2>Projetos <button type="button" class="button blue mobile" onclick="location.assign('/cadastrarProjeto')">+</button></h2>
         <br>
         <% projetos.forEach(function(projeto){ %>  
