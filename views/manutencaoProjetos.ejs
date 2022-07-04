@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Manutenção de Projetos</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
   <body>
     <div class="header">
@@ -11,90 +11,55 @@
       </div>
     </div>
 
-    <div class="formProjetos" > 
+    <div class="container"> 
       <h1> Manutenção de Projetos </h1>
-
       <form action="<%=acao%>" method="post">
 
-        <table>
+        
+        <div class="mb-12">
+					<div class="col-lg-12">
+						<label for="nome" class="form-label">Nome do projeto</label>
+						<input type="text" name="edtNomeProjeto" value="<%=projeto.proj_nome%>" class="form-control nome" >
+					</div>
+				</div>
 
-          <tr>
-            <td>
-              <span>Nome Projeto</span>
-            </td>
-          </tr>
+				<div class="row">
+					<div class="col-4">
+						<label for="text" class="form-label">Bairro</label>	
+						<input type="text" name="edtBairro" value="<%=projeto.proj_bairro%>" class="form-control Bairro" >
+					</div>
 
-          <tr>
-            <td>
-              <input type="text" name="edtNomeProjeto" value="<%=projeto.proj_nome%>">
-            </td>
-          </tr>
+					<div class="col-4">
+						<label for="senha" class="form-label">Município</label>	
+						<input type="text" name="edtMunicipio" value="<%=projeto.proj_municipio%>" class="form-control Município" >
+					</div>
 
-          <tr>
-            <td>
-              <span>Logradouro</span>
-            </td>
-          </tr>
+					<div class="col-4">
+						<label for="telefone" class="form-label">Data inicial</label>	
+						<input type="number" name="edtData"  value="<%=projeto.proj_data_inicio%>" class="form-control Data inicial" >
+					</div>
+          <div class="col-4">
+						<label for="telefone" class="form-label">Gasto estimado</label>	
+						<input type="number" name="edtGastoEstimado"  value="<%=projeto.proj_gasto_estimado%>" class="form-control Gasto estimado">
+					</div>
+				</div>
+        
 
-          <tr>
-            <td>
-              <input type="text" name="edtLogradouro" value="<%=projeto.proj_logradouro%>">
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <span>Bairro</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <input type="text" name="edtBairro" value="<%=projeto.proj_bairro%>">
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <span>Munícipio</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <input type="text" name="edtMunicipio" value="<%=projeto.proj_municipio%>">
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <span>Data Início</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <input type="text" name="edtData" value="<%=projeto.proj_data_inicio%>">
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <span>Gasto Estimado</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <input type="text" name="edtGastoEstimado" value="<%=projeto.proj_gasto_estimado%>">
-            </td>
-          </tr>
-        </table>
-
-        <td> <input name="btnSalvar" type="submit" value="Salvar"> </td>
-        <td> <input name="btnRemover" type="button" value="Remover" onclick="location.assign('/excluirProjeto/<%=projeto.proj_codigo%>')"></td>
-        <td> <input name="btnCancelar" type="button" value="Cancelar" onclick="location.assign('/')"></td>
+        <div class="row col-12 botoes">
+          <div class="col-4">
+        <td> <input class="btn btn-primary btn-xs btn-register col-12" name="btnSalvar" type="submit" value="Salvar"> </td>
+      </div>
+      <div class="col-4">
+        <td> <input class="btn btn-primary btn-xs btn-register col-12" name="btnRemover" type="button" value="Remover" onclick="location.assign('/excluirProjeto/<%=projeto.proj_codigo%>')"></td>
+      </div>
+      <div class="col-4">
+        <td> <input class="btn btn-danger btn-xs btn-register col-12" name="btnCancelar" type="button" value="Cancelar" onclick="location.assign('/')"></td>
+      </div>
+        </div>
       </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
