@@ -16,34 +16,35 @@
       <form action="<%=acao%>" method="post">
 
         
-        <div class="mb-12">
-					<div class="col-lg-12">
+
+				<div class="row">
+
+          <div class="col-6">
 						<label for="nome" class="form-label">Nome do projeto</label>
 						<input type="text" name="edtNomeProjeto" value="<%=projeto.proj_nome%>" class="form-control nome" >
 					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-4">
+
+					<div class="col-6">
 						<label for="text" class="form-label">Bairro</label>	
 						<input type="text" name="edtBairro" value="<%=projeto.proj_bairro%>" class="form-control Bairro" >
 					</div>
 
-					<div class="col-4">
+					<div class="col-6">
 						<label for="senha" class="form-label">Município</label>	
 						<input type="text" name="edtMunicipio" value="<%=projeto.proj_municipio%>" class="form-control Município" >
 					</div>
 
-					<div class="col-4">
+					<div class="col-6">
 						<label for="telefone" class="form-label">Data inicial</label>	
-						<input type="number" name="edtData"  value="<%=projeto.proj_data_inicio%>" class="form-control Data inicial" >
+						<input type="text" name="edtData"  value="<%=projeto.proj_data_inicio%>" class="form-control Data inicial" >
 					</div>
-          <div class="col-4">
+          <div class="col-6">
 						<label for="telefone" class="form-label">Gasto estimado</label>	
-						<input type="number" name="edtGastoEstimado"  value="<%=projeto.proj_gasto_estimado%>" class="form-control Gasto estimado">
+						<input type="text" name="edtGastoEstimado"  value="<%=projeto.proj_gasto_estimado%>" class="form-control Gasto estimado">
 					</div>
 				</div>
-        
+        <br>
 
         <div class="row col-12 botoes">
           <div class="col-4">
